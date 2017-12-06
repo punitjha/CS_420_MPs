@@ -1,0 +1,31 @@
+----------------------------------------
+Begin Torque Prologue (Wed Sep 13 23:39:05 2017)
+Job ID:           6513046.cc-mgmt1.campuscluster.illinois.edu
+Username:         punit2
+Group:            CS420_fa17
+Job Name:         mp0_a
+Limits:           walltime=00:10:00
+Job Queue:        cs
+Account:          cs-courses
+Nodes:            golub161
+ls: cannot access /var/spool/torque/mom_priv/jobs/*JB: No such file or directory
+End Torque Prologue
+----------------------------------------
+----------------------------------------
+Begin Torque Epilogue (Wed Sep 13 23:39:39 2017)
+Job ID:           6513046.cc-mgmt1.campuscluster.illinois.edu
+Username:         punit2
+Group:            CS420_fa17
+Job Name:         mp0_a
+Session:          82551
+Limits:           walltime=00:10:00
+Resources:        cput=00:00:16,vmem=595596kb,walltime=00:00:35,mem=550336kb,energy_used=0
+Job Queue:        cs
+Account:          cs-courses
+Nodes:            golub161
+ssh: connect to host mic1 port 22: Connection refused
+lost connection
+ssh: connect to host mic1 port 22: Connection refused
+lost connection
+End Torque Epilogue
+----------------------------------------
