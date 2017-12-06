@@ -1,0 +1,30 @@
+----------------------------------------
+Begin Torque Prologue (Thu Oct 12 12:52:26 2017)
+Job ID:           6563972.cc-mgmt1.campuscluster.illinois.edu
+Username:         punit2
+Group:            CS420_fa17
+Job Name:         mp1
+Limits:           walltime=00:20:00,nodes=1:ppn=12,neednodes=1:ppn=12
+Job Queue:        cs
+Account:          cs-courses
+Nodes:            golub161
+End Torque Prologue
+----------------------------------------
+----------------------------------------
+Begin Torque Epilogue (Thu Oct 12 13:05:49 2017)
+Job ID:           6563972.cc-mgmt1.campuscluster.illinois.edu
+Username:         punit2
+Group:            CS420_fa17
+Job Name:         mp1
+Session:          6217
+Limits:           walltime=00:20:00,nodes=1:ppn=12,neednodes=1:ppn=12
+Resources:        cput=00:13:16,vmem=337500kb,walltime=00:13:24,mem=286616kb,energy_used=0
+Job Queue:        cs
+Account:          cs-courses
+Nodes:            golub161
+ssh: connect to host mic1 port 22: Connection refused
+lost connection
+ssh: connect to host mic1 port 22: Connection refused
+lost connection
+End Torque Epilogue
+----------------------------------------

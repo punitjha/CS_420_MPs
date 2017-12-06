@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -l walltime=00:20:00
+#PBS -l nodes=1:ppn=12
+#PBS -N mp1
+#PBS -q cs
+#PBS -o out-${PBS_JOBID%%.*}.txt
+#PBS -e err-${PBS_JOBID%%.*}.txt
+
+cd ${PBS_O_WORKDIR}
+
+module load papi
+
+echo "Running code without PAPI..."
+./cc_no_papi_3000_3000
+
+echo "Running code with PAPI..."
+./cc_with_papi_3000_3000

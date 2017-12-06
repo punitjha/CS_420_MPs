@@ -1,0 +1,35 @@
+Running code without PAPI...
+Running basic sequential version to save the results.
+Running the basic version.
+Execution time: 178.8451371
+Running your better basic version.
+Execution time: 129.4763699
+GOOD -- Test passed.
+Running your cache-aware version.
+Execution time: 92.3585298
+GOOD -- Test passed.
+Running code with PAPI...
+Intializing PAPI.
+Running basic sequential version to save the results.
+Prepared counter: 'PAPI_L3_TCM'.
+Prepared counter: 'PAPI_L3_DCA'.
+Running the basic version.
+Starting PAPI counters.
+Execution time: 178.7615480
+Event 1: 3376819393
+Event 2: 3439341093
+Resetting PAPI.
+Running your better basic version.
+Starting PAPI counters.
+Execution time: 129.5032771
+Event 1: 3376924603
+Event 2: 3434648627
+Resetting PAPI.
+GOOD -- Test passed.
+Running your cache-aware version.
+Starting PAPI counters.
+Execution time: 92.6781290
+Event 1: 9448272
+Event 2: 172157010
+Resetting PAPI.
+GOOD -- Test passed.
