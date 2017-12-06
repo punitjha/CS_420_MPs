@@ -1,0 +1,25 @@
+Intializing PAPI.
+Running basic sequential version to save the results.
+Prepared counter: 'PAPI_L2_DCM'.
+Prepared counter: 'PAPI_L2_DCA'.
+Running the basic version.
+Starting PAPI counters.
+Execution time: 0.0371802
+Event 1: 1696578
+Event 2: 12738095
+Resetting PAPI.
+Running your openMP version using 8 threads
+Starting PAPI counters.
+Execution time: 0.0055461
+Event 1: 225416
+Event 2: 1592805
+Resetting PAPI.
+GOOD -- Test passed.
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 95228 RUNNING AT golub162
+=   EXIT CODE: 255
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================

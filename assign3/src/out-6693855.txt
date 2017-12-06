@@ -1,0 +1,40 @@
+Intializing PAPI.
+Running basic sequential version to save the results.
+Prepared counter: 'PAPI_L2_DCM'.
+Prepared counter: 'PAPI_L2_DCA'.
+Running the basic version.
+Starting PAPI counters.
+Execution time: 339.5603600
+Event 1: 1787972803
+Event 2: 139149616704
+Resetting PAPI.
+Running your openMP version using 8 threads
+Starting PAPI counters.
+Execution time: 46.6085041
+Event 1: 237732072
+Event 2: 17399649424
+Resetting PAPI.
+GOOD -- Test passed.
+Intializing PAPI.
+Running basic sequential version to save the results.
+Prepared counter: 'PAPI_L2_DCM'.
+Prepared counter: 'PAPI_L2_DCA'.
+Running the basic version.
+Starting PAPI counters.
+Execution time: 339.2061808
+Event 1: 1782048334
+Event 2: 139206428857
+Resetting PAPI.
+Running mpi version with 1 processes.
+Starting PAPI counters.
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 59235 RUNNING AT golub161
+=   EXIT CODE: 8
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Floating point exception (signal 8)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

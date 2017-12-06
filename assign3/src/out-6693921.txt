@@ -1,0 +1,34 @@
+Intializing PAPI.
+Running basic sequential version to save the results.
+Prepared counter: 'PAPI_L2_DCM'.
+Prepared counter: 'PAPI_L2_DCA'.
+Running the basic version.
+Starting PAPI counters.
+Execution time: 340.8202929
+Event 1: 1790324902
+Event 2: 139173782542
+Resetting PAPI.
+Running your openMP version using 8 threads
+Starting PAPI counters.
+Execution time: 47.2590001
+Event 1: 238780361
+Event 2: 17402813643
+Resetting PAPI.
+GOOD -- Test passed.
+Intializing PAPI.
+Running basic sequential version to save the results.
+Prepared counter: 'PAPI_L2_DCM'.
+Prepared counter: 'PAPI_L2_DCA'.
+Running the basic version.
+Starting PAPI counters.
+Execution time: 385.4837329
+Event 1: 1794907593
+Event 2: 139185642245
+Resetting PAPI.
+Running mpi version with 8 processes.
+Starting PAPI counters.
+Execution time: 56.2535839
+Event 1: 513730
+Event 2: 1001297
+Resetting PAPI.
+GOOD -- Test passed.
