@@ -1,0 +1,199 @@
+This is the first text file for the assignment: Part A
+Submitted by: Punit Kumar Jha
+===============================================================================================================================================================
+
+OUTPUT FILE/ DISCUSSIONS
+
+
+The main program that produces the output files consists of 5 functions which carry out different tasks (and has a  timer function).
+
+****************************************************************************************************************************************************************
+void test1() -- multiply two numbers 1000000 times and measure the time taken (average time for 10 such operations is printed out).
+****************************************************************************************************************************************************************
+void test2() -- generate random numbers between 0 to 99999, 1000000 times and store them in two arrays. Then another loop is created to store the sum of the previous two arrays. 
+****************************************************************************************************************************************************************
+void test3() -- intializing the elements of a  1024*1024 array with 1000. Every 1024th element is initilizied in order, i.e, 0,1024,2048, 3072 etc in the first itiration then the elements 1, 1025, 2049, 3073 etc in another itiration.
+****************************************************************************************************************************************************************
+void test4() -- intializing the elements of a  1024*1024 array, A with random numbers generated between 1 to 999. Here the elements 1 units away from the previous one, i.e, in the order 1,2,3,4,5..... This test has anothe loop  which initalizes the array B with the elements of A. The elements of B are initalized every 1024th element apart.
+****************************************************************************************************************************************************************
+void test5() -- two for loops which first initialize the array A with 10000 elements with the number 25 and then another loop which multiplies each element with 2.
+
+
+
+
+
+===============================================================================================================================================================
+The output file produced for --O0 level of optimization is shown below:
+
+time taken for test1 = 0.0019104003906250
+time taken for test2 = 0.0031449079513550
+time taken for test3 = 0.0146442174911499
+time taken for test4 = 0.0143363237380981
+time taken for test5 = 0.0000498056411743
+
+********************************************************************************
+
+The output file produced for --O1 level of optimization is shown below:
+
+time taken for test1 = 0.0000000000000000
+time taken for test2 = 0.0007289886474609
+time taken for test3 = 0.0042042016983032
+time taken for test4 = 0.0042109012603760
+time taken for test5 = 0.0000093936920166
+
+********************************************************************************
+
+The output file produced for --O2 level of optimization is shown below:
+
+time taken for test1 = 0.0000000953674316
+time taken for test2 = 0.0011473894119263
+time taken for test3 = 0.0002796888351440
+time taken for test4 = 0.0020404815673828
+time taken for test5 = 0.0000027894973755
+
+
+********************************************************************************
+
+The output file produced for --O3 level of optimization is shown below:
+
+time taken for test1 = 0.0000000000000000
+time taken for test2 = 0.0011237144470215
+time taken for test3 = 0.0002698898315430
+time taken for test4 = 0.0019917011260986
+time taken for test5 = 0.0000026941299438
+
+********************************************************************************
+
+We note that with increasing level of optimization the time required for each of the task/test goes down. 
+
+
+From the Intel Compiler manual we see that:
+
+********************************************************************************
+-O0  -- stands for no optimization. It should be used in the early stages of development and debugging.
+********************************************************************************
+-O1  -- stands for optimazation for size. This level of optimization omits size different optimization that tend to increase the size of the object. It creates the smallest possible optimzed code in most cases. Its most useful in large server and database applications. This option disables inlining for some intrinsics. Here, the compiler auto-vectorization is disabled.
+********************************************************************************
+-O2  -- This maximizes the speed. This is the default setting in the intel compilers. It creates faster codes than O1 in most cases. The complier optimization  is eabled at O2 level. Some basic loop optimizations, inlining of intrinsic, intra-file interprocedural optimization etc are enabled.
+********************************************************************************
+-O3  -- This includes all the optimizations in --O2 level, in addition it enables more aggressive loop and memory access optimizations, for instance, scalar replacements, loop unrolling, code replication to eliminate branches, loop blocking to allow more efficient use of cache and additional data prefetching. According to the Intel manual this form of optimization is really reccommended for applications that have loops that do many floating points calculations or process large amount of data sets. However, this aggressive optimization may sometimes slow down other type of applications.
+********************************************************************************
+
+Using the -qopt-report flag for all the optimzation levels -O0, -O1, -O2, -O3  the optimization report file was generated. Using the -S flag the assembly codes were generated.
+
+
+===============================================================================================================================================================
+The Opimization reports.
+===============================================================================================================================================================
+
+For -O0 the optimzation report (henceforth called the opt-report) is empty since no optimzation was done. In the opt-report of -O2 and -O3 level of optimization we see that  loops for the various test() functions are first inlined. The smaller the routine size the more likely it is to be inlined.
+
+
+********************************************************************************
+For test1():
+
+-O0 level optimization:- no optimzation. No report file was found to be generated.
+
+-O1 level optimization:- loop optimzation  disabled.
+
+-O2 level optimization:-the loop cannot be vectorized due to vector dependence.
+
+-O3 level optimization:- the loop cannot be vectorized due to vector dependence. The call to get_clock() was unable to be vectorized in both the levels of optimization. 
+
+********************************************************************************
+For test2():
+
+-O0 level optimization:- no optimzation. No report file was found to be generated.
+
+-O1 level optimization:- loop optimzation  disabled.
+
+-O2 level optimization:- The call to function generating random numbers was not able to be vectorized. The compiler found OUTPUT dependence here between two calls to rand functions. The second loop of test2(), was already vectorized, so no vectorization was needed there. In this function, the arrays C[i] and B[i] have aligned access while A[i] does not. Data alignment is a method to force the compiler to create data objects in memory on specific byte boundaries. This increases the data loads and stores to and from the processors. We see that the compiler creates an efficient vectorized loop kernel. The remainder loops (remark #15442) are those left over iterations of the orignal source loop that occur before and after the main vectorized kernel.
+
+-O3 level optimization:- The optimizations here include the above described optimizations for the -O2 level..
+
+
+********************************************************************************
+For test3():
+
+-O0 level optimization:- no optimzation. No report file was found to be generated.
+
+-O1 level optimization:- loop optimzation disabled.
+
+-O2 level optimization:- For test3() function, according to the compiler report, a loop interchange at line 85 could have be done (to improve locality of the reference), however it not successful due to imperfect loop structure. The report also pointed out that loop at line 88 of the mo0_b file, reference A[i*1024+j] has aligned access. The inner loop was already vectorized.
+
+-O3 level optimization:- The optimizations here include the above described optimizations for the -O2 level.
+
+
+
+
+
+********************************************************************************
+For test4():
+
+-O0 level optimization:- no optimzation. No report file was found to be generated.
+
+-O1 level optimization:- loop optimzation disabled.
+
+-O2 level optimization:-  The outer for loop in line 111 of the mo0_b file, could not be vectorized by this level of optimization the cmopiler suggests using SIM directives. Similar to test(), in line 112, call to function generating random numbers was not able to be vectorized. At line 115, of the mo0_b file, the compiler carried out a loop interchange Suggested Permutation : ( 1 2 3 ) --> ( 1 3 2 ). Also at line 119, the loop nest was interchanged which results optimal cache usage. However the outer loop was unable to vectroize.
+
+-O3 level optimization:- At this level of optimization, outer for loop in line 111 of the mo0_b file, could not be vectorized due to OUTPUT dependence. The opt-report stated that at line 119, A[i*1024+j] has unaligned access inside the body loop. So the loop was not vectorized (althoug its possible but its inefficient).    
+
+
+
+
+
+
+********************************************************************************
+For test5():
+
+-O0 level optimization:- no optimzation. No report file was found to be generated.
+
+-O1 level optimization:- loop optimzation  disabled.
+
+-O2 level optimization:- At this level of optimization, we see that the normalized vectorization overhead 0.833. Since  A[i] has aligned access, the for which contained it was successfully vectorized. 
+
+-O3 level optimization:- Unlike the previous optimization level, the normalized vectorization overhead is 0.312. The lesser normalized vectorization overhead value means that instructions in the control path are not bypassed as much as the previous level. Also the fused loop in line 144, was vectorized with this level of optimization. In this test case, we see that the number of hardware registers assigned was 19 for -O2 case and 17 of -O3 case. The routine temproraies allocated/used were also different for both the level of optimizations. We list them below:
+
+
+
+
+     -O2 level of optimzation               -O3 level of optimzation
+
+     ========================            ================================
+
+ Routine temporaries                     Routine temporaris
+        Total         :      79              Total       :    49
+            Global    :      39                  Global  :    30
+            Local     :      40                  Local   :    19
+        Regenerable   :       7                  Regenerable:  7
+        Spilled       :       8                  Spilled :     9
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

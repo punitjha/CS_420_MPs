@@ -1,0 +1,62 @@
+This is the first text file for the assignment: Part A
+Submitted by: Punit Kumar Jha
+================================================================================================================================================================================
+
+THE OUPUT FILE:
+
+The output is shown below:
+
+
+time at 0: 0.0000000000 (sec)
+time at 1: 0.0000000000 (sec)
+time at 2: 0.0000000000 (sec)
+time at 3: 0.0000000000 (sec)
+time at 4: 0.0000000000 (sec)
+time at 5: 0.0000000000 (sec)
+time at 6: 0.0000000000 (sec)
+time at 7: 0.0000000000 (sec)
+time at 8: 0.0000000000 (sec)
+time at 9: 0.0000000000 (sec)
+time for size = 64 was: 0.403041. per access: 3.002890 nanoseconds
+time for size = 128 was: 0.401736. per access: 2.993167 nanoseconds
+time for size = 256 was: 0.394448. per access: 2.938865 nanoseconds
+time for size = 512 was: 0.388665. per access: 2.895781 nanoseconds
+time for size = 1024 was: 0.395766. per access: 2.948687 nanoseconds
+time for size = 2048 was: 0.398634. per access: 2.970054 nanoseconds
+time for size = 4096 was: 0.396038. per access: 2.950713 nanoseconds
+time for size = 8192 was: 0.403638. per access: 3.007337 nanoseconds
+time for size = 16384 was: 0.422859. per access: 3.150545 nanoseconds
+time for size = 32768 was: 0.465832. per access: 3.470719 nanoseconds
+time for size = 65536 was: 0.540783. per access: 4.029147 nanoseconds
+time for size = 131072 was: 0.596557. per access: 4.444697 nanoseconds
+time for size = 262144 was: 0.603494. per access: 4.496380 nanoseconds
+time for size = 524288 was: 0.614266. per access: 4.576638 nanoseconds
+time for size = 1048576 was: 0.604936. per access: 4.507125 nanoseconds
+time for size = 2097152 was: 0.598863. per access: 4.461878 nanoseconds
+time for size = 4194304 was: 0.633440. per access: 4.719496 nanoseconds
+time for size = 8388608 was: 1.913769. per access: 14.258690 nanoseconds
+time for size = 16777216 was: 1.976472. per access: 14.725865 nanoseconds
+time for size = 33554432 was: 1.996815. per access: 14.877431 nanoseconds
+time for size = 67108864 was: 2.068140. per access: 15.408844 nanoseconds
+
+
+
+================================================================================================================================================================================
+Discussions:
+================================================================================================================================================================================
+
+The main program for generating this output (mp0_a.c) consists of three functions:
+
+1. void timerTest() -- tests the time taken for calling the timer function itself. This is almost zeros as can be seen from the first few lines of the output file.
+
+2. double get_clock() -- this uses the gettimeofday() function of C language to get the date and time.
+
+3. void initValues(int *A, int *indirection, int maxsize,int stride, int size) -- used for initializing the value of the array from 64 elements to 67 million elements.
+
+and the main function: int main(int argc, char**argv)
+
+
+We can see from the output file that as the size of the array increases the time required for accessing/initializing its elements increases in general (time required in each update step). From the list above we observe that when we go from 64 to 512 elements the time to access each element goes down from 3.002890 nsec to 2.895789 nsec -- since we have a contiguous array, the processors fetches an entire cache line. Since the next element (byte) is next to the previous element the access is faster. The cache miss is lower. But beyond 1024 elements of the array, the element access time increases. This is because the byte requested is no longer in the same cache line which is fetche, we have a cache miss.The next element will have to be read from another cache line. We also observe that going beyond 4194304 elements, there is a drastic increase in the access time. This may be because it have hit the cache limit and no more extra elements/bytes can be temprorarily stored on cache. This also increases the cache miss ratio.
+
+
+
